@@ -25,11 +25,15 @@ buttonMaker();
 $("#additional").on("click", function(event) {
 	event.preventDefault();
 	var userInput = $("#halloween-input").val().trim();
-	topics.push(userInput);
-	buttonMaker();
-	console.log(topics); //test
-	userInput = $("#halloween-input").val(" ");
-	});
+
+	//if the text input is empty, a new button should NOT be created
+	if (!userInput == " ") {
+		topics.push(userInput);
+		buttonMaker();
+		console.log(topics); //test
+		userInput = $("#halloween-input").val(" ");
+	}
+});
 
 
 $("<button>").on("click", function() {
