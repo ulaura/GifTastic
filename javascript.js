@@ -39,8 +39,11 @@ $("#additional").on("click", function(event) {
 
 
 
-
-$(".topic-button").on("click", function() {
+/*the on-click event has to be written this way because a $("#target-id").on("click") will only work once
+per page load and ignore any updated information (like NEW buttons showing up). This way of writing the on-click
+allows for new buttons to appear and have the on-click function still work. The submit button never changes, so
+its on-click function is fine the way it is*/
+$(document).on("click", ".topic-button", function() {
 	var apiKey = "c64ca2f719e54ca5baaaf7946271c6e4";
 	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this).html() + "&api_key=" + apiKey + "&limit=5";
 	
@@ -55,7 +58,7 @@ $(".topic-button").on("click", function() {
 		//something is wrong here. can't seem to target what I need out of the object correctly
 		//you are pulling up 5 indices when you pull info from the API. 
 		//you need to loop through the array to pull out all 5 gif urls.
-		//i already added a "j" as a reminder
+		//this will be where results[0] is now
 		var results = response.data;
 
 		//creates a new <img> tag, then adds a soure to it, and then the alternate title
