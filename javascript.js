@@ -35,16 +35,22 @@ $("#additional").on("click", function(event) {
 	}
 });
 
-
-$("<button>").on("click", function() {
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + $("#topic-button").val() + "&api_key=" + apiKey + "&limit=5";
+//accessing the API
+//api is being accessed, but I'm not calling in the correct info. 
+//something is wrong with my queryURL. I suspect it's the id s#topic-button.
+//limit=5 is working.
+//apiKey is working.
+//.done(function(response)) is working
+$("button").on("click", function() {
 	var apiKey = "c64ca2f719e54ca5baaaf7946271c6e4";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $("#topic-button") + "&api_key=" + apiKey + "&limit=5";
+	
 
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	}).done(function(response){
-
+		console.log(response.data); //test
 
 
 
