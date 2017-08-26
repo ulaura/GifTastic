@@ -62,14 +62,38 @@ $(document).on("click", ".topic-button", function() {
 		var results = response.data;
 
 		//creates a new <img> tag, then adds a soure to it, and then the alternate title
-		//so far i am getting the alt message because imageURL isn't working properly
+		//I should change the class an id each gif will receive
 		var newImage = $("<img>");
 		newImage.attr("src", results[0].images.fixed_height_still.url);
 		newImage.attr("alt", "missing gif");
+		newImage.attr("class", "new-gif");
 
 		$("#halloween-gif").append(newImage);
 
 		//when you click on the gif, it needs to go from fixed_height_still.url to fixed_height.url 
+		//the function works, however each click causes ALL gifs to start and stop at the same time
+		//that's because I set them equal to a class. I should give each gif their own ID and target that instead
+		var isMoving = false;
+		$(document).on("click", ".new-gif", function() {
+
+			if (!isMoving) {
+				newImage.attr("src", results[0].images.fixed_height.url); //makes the gif move
+				isMoving = true;
+			} else {
+				newImage.attr("src", results[0].images.fixed_height_still.url); //makes the gif stop
+				isMoving = false;
+			}
+
+
+
+		});
+
+
+
+
+
+
+
 	});
 
 
