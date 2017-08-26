@@ -43,7 +43,7 @@ $("#additional").on("click", function(event) {
 //.done(function(response)) is working
 $("button").on("click", function() {
 	var apiKey = "c64ca2f719e54ca5baaaf7946271c6e4";
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $("#topic-button") + "&api_key=" + apiKey + "&limit=5";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $("#topic-button").html() + "&api_key=" + apiKey + "&limit=5";
 	
 
 	$.ajax({
@@ -52,6 +52,17 @@ $("button").on("click", function() {
 	}).done(function(response){
 		console.log(response.data); //test
 
+		//targets the URL in the info for api results
+		//something is wrong here. can't seem to target what I need out of the object correctly
+		var imageURL = response.data.url;
+
+		//creates a new <img> tag, then adds a soure to it, and then the alternate title
+		//so far i am getting the alt message because imageURL isn't working properly
+		var newImage = $("<img>");
+		newImage.attr("src", imageURL);
+		newImage.attr("alt", "missing gif");
+
+		$("#halloween-gif").append(newImage);
 
 
 	});
