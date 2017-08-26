@@ -10,7 +10,7 @@ function buttonMaker() {
 	$("#halloween-buttons").empty();
 
 	for (var i = 0; i < topics.length; i++) {
-		$("#halloween-buttons").append("<button type=button id='topic-button'>" + topics[i] + "</button>");
+		$("#halloween-buttons").append("<button type=button class='topic-button'>" + topics[i] + "</button>");
 	};
 
 
@@ -18,6 +18,8 @@ function buttonMaker() {
 
 
 buttonMaker();
+
+
 
 
 //on-clicik event to accept user's input, append it to the topics array,
@@ -35,15 +37,12 @@ $("#additional").on("click", function(event) {
 	}
 });
 
-//accessing the API
-//api is being accessed, but I'm not calling in the correct info. 
-//something is wrong with my queryURL. I suspect it's the id s#topic-button.
-//limit=5 is working.
-//apiKey is working.
-//.done(function(response)) is working
-$("button").on("click", function() {
+
+
+
+$(".topic-button").on("click", function() {
 	var apiKey = "c64ca2f719e54ca5baaaf7946271c6e4";
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $("#topic-button").html() + "&api_key=" + apiKey + "&limit=5";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this).html() + "&api_key=" + apiKey + "&limit=5";
 	
 
 	$.ajax({
@@ -54,17 +53,20 @@ $("button").on("click", function() {
 
 		//targets the URL in the info for api results
 		//something is wrong here. can't seem to target what I need out of the object correctly
-		var imageURL = response.data.url;
+		//you are pulling up 5 indices when you pull info from the API. 
+		//you need to loop through the array to pull out all 5 gif urls.
+		//i already added a "j" as a reminder
+		var results = response.data;
 
 		//creates a new <img> tag, then adds a soure to it, and then the alternate title
 		//so far i am getting the alt message because imageURL isn't working properly
 		var newImage = $("<img>");
-		newImage.attr("src", imageURL);
+		newImage.attr("src", results[0].images.fixed_height_still.url);
 		newImage.attr("alt", "missing gif");
 
 		$("#halloween-gif").append(newImage);
 
-
+		//when you click on the gif, it needs to go from fixed_height_still.url to fixed_height.url 
 	});
 
 
