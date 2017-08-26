@@ -20,15 +20,15 @@ function buttonMaker() {
 buttonMaker();
 
 
-//problem: whenever i try to add a new button, it appears and disappears right away
-//I don't think I am targetting the submit button correctly. 
-//The test within the function is not working. Nothing logs to the console.
-$("#additional").on("click", function() {
-	var userInput = $("#halloween-input").val();
+//on-clicik event to accept user's input, append it to the topics array,
+//and turn the input into a new button
+$("#additional").on("click", function(event) {
+	event.preventDefault();
+	var userInput = $("#halloween-input").val().trim();
 	topics.push(userInput);
 	buttonMaker();
 	console.log(topics); //test
-
+	userInput = $("#halloween-input").val(" ");
 	});
 
 
