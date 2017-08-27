@@ -44,8 +44,10 @@ per page load and ignore any updated information (like NEW buttons showing up). 
 allows for new buttons to appear and have the on-click function still work. The submit button never changes, so
 its on-click function is fine the way it is*/
 $(document).on("click", ".topic-button", function() {
+	$("#halloween-gif").empty(); //empties out previous gifs
+
 	var apiKey = "c64ca2f719e54ca5baaaf7946271c6e4";
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this).html() + "&api_key=" + apiKey + "&limit=5";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + $(this).html() + "&api_key=" + apiKey + "&limit=10";
 	
 
 	$.ajax({
@@ -63,24 +65,27 @@ $(document).on("click", ".topic-button", function() {
 
 		//creates a new <img> tag, then adds a soure to it, and then the alternate title
 		//I should change the class an id each gif will receive
-		var newImage = $("<img>");
-		newImage.attr("src", results[0].images.fixed_height_still.url);
-		newImage.attr("alt", "missing gif");
-		newImage.attr("class", "new-gif");
+		for (var j = 0; j < results.length; j++) {
 
-		$("#halloween-gif").append(newImage);
+			var newImage = $("<img>");
+			newImage.attr("src", results[j].images.fixed_height_still.url);
+			newImage.attr("alt", "missing gif");
+			newImage.attr("id", "new-gif" + j);
 
+			$("#halloween-gif").append(newImage);
+
+			
+		}
 		//when you click on the gif, it needs to go from fixed_height_still.url to fixed_height.url 
-		//the function works, however each click causes ALL gifs to start and stop at the same time
-		//that's because I set them equal to a class. I should give each gif their own ID and target that instead
+		//the function works, however each click makes all the gifs move and stop at once.
 		var isMoving = false;
-		$(document).on("click", ".new-gif", function() {
+		$(document).on("click", ".new-gif" , function() {
 
 			if (!isMoving) {
-				newImage.attr("src", results[0].images.fixed_height.url); //makes the gif move
+				$(".new-gif").attr("src", results[1].images.fixed_height.url); //makes the gif move
 				isMoving = true;
 			} else {
-				newImage.attr("src", results[0].images.fixed_height_still.url); //makes the gif stop
+				$(".new-gif").attr("src", results[1].images.fixed_height_still.url); //makes the gif stop
 				isMoving = false;
 			}
 
