@@ -77,26 +77,155 @@ $(document).on("click", ".topic-button", function() {
 			
 		}
 		//when you click on the gif, it needs to go from fixed_height_still.url to fixed_height.url 
-		//the function works, however each click makes all the gifs move and stop at once.
-		var isMoving = false;
-		$(document).on("click", ".new-gif" , function() {
+		//I CODED THIS IN WITH BRUTE FORCE AT THIS PART BECAUSE I COULDN'T FIGURE OUT HOW TO MAKE IT INTO 
+		//A WORKING FUNCTION.
+		//I AM VERY ANNOYED WITH MYSELF ABOUT THIS. 
 
-			if (!isMoving) {
-				$(".new-gif").attr("src", results[1].images.fixed_height.url); //makes the gif move
-				isMoving = true;
+		//for gif #0
+		var isMoving0 = false;
+		$(document).on("click", "#new-gif0" , function() {
+
+			if (!isMoving0) {
+				$("#new-gif0").attr("src", results[0].images.fixed_height.url); //makes the gif move
+				isMoving0 = true;
 			} else {
-				$(".new-gif").attr("src", results[1].images.fixed_height_still.url); //makes the gif stop
-				isMoving = false;
+				$("#new-gif0").attr("src", results[0].images.fixed_height_still.url); //makes the gif stop
+				isMoving0 = false;
 			}
 
+		});
 
+		//gif #1
+		var isMoving1 = false;
+		$(document).on("click", "#new-gif1" , function() {
+
+			if (!isMoving1) {
+				$("#new-gif1").attr("src", results[1].images.fixed_height.url); //makes the gif move
+				isMoving1 = true;
+			} else {
+				$("#new-gif1").attr("src", results[1].images.fixed_height_still.url); //makes the gif stop
+				isMoving1 = false;
+			}
+
+		});
+
+		//gif #2
+		var isMoving2 = false;
+		$(document).on("click", "#new-gif2" , function() {
+
+			if (!isMoving2) {
+				$("#new-gif2").attr("src", results[2].images.fixed_height.url); //makes the gif move
+				isMoving2 = true;
+			} else {
+				$("#new-gif2").attr("src", results[2].images.fixed_height_still.url); //makes the gif stop
+				isMoving2 = false;
+			}
+
+		});
+
+		//gif #3
+		var isMoving3 = false;
+		$(document).on("click", "#new-gif3" , function() {
+
+			if (!isMoving3) {
+				$("#new-gif3").attr("src", results[3].images.fixed_height.url); //makes the gif move
+				isMoving3 = true;
+			} else {
+				$("#new-gif3").attr("src", results[3].images.fixed_height_still.url); //makes the gif stop
+				isMoving3 = false;
+			}
 
 		});
 
 
+		//gif #4
+		var isMoving4 = false;
+		$(document).on("click", "#new-gif4" , function() {
+
+			if (!isMoving4) {
+				$("#new-gif4").attr("src", results[4].images.fixed_height.url); //makes the gif move
+				isMoving4 = true;
+			} else {
+				$("#new-gif4").attr("src", results[4].images.fixed_height_still.url); //makes the gif stop
+				isMoving4 = false;
+			}
+
+		});
 
 
+		//gif #5
+		var isMoving5 = false;
+		$(document).on("click", "#new-gif5" , function() {
 
+			if (!isMoving5) {
+				$("#new-gif5").attr("src", results[5].images.fixed_height.url); //makes the gif move
+				isMoving5 = true;
+			} else {
+				$("#new-gif5").attr("src", results[5].images.fixed_height_still.url); //makes the gif stop
+				isMoving5 = false;
+			}
+
+		});
+
+
+		//gif #6
+		var isMoving6 = false;
+		$(document).on("click", "#new-gif6" , function() {
+
+			if (!isMoving6) {
+				$("#new-gif6").attr("src", results[6].images.fixed_height.url); //makes the gif move
+				isMoving6 = true;
+			} else {
+				$("#new-gif6").attr("src", results[6].images.fixed_height_still.url); //makes the gif stop
+				isMoving6 = false;
+			}
+
+		});
+
+
+		//gif #7
+		var isMoving7 = false;
+		$(document).on("click", "#new-gif7" , function() {
+
+			if (!isMoving7) {
+				$("#new-gif7").attr("src", results[7].images.fixed_height.url); //makes the gif move
+				isMoving7 = true;
+			} else {
+				$("#new-gif7").attr("src", results[7].images.fixed_height_still.url); //makes the gif stop
+				isMoving7 = false;
+			}
+
+		});
+
+
+		//gif #8
+		var isMoving8 = false;
+		$(document).on("click", "#new-gif8" , function() {
+
+			if (!isMoving8) {
+				$("#new-gif8").attr("src", results[8].images.fixed_height.url); //makes the gif move
+				isMoving8 = true;
+			} else {
+				$("#new-gif8").attr("src", results[8].images.fixed_height_still.url); //makes the gif stop
+				isMoving8 = false;
+			}
+
+		});
+
+
+		//gif #9
+		var isMoving9 = false;
+		$(document).on("click", "#new-gif9" , function() {
+
+			if (!isMoving9) {
+				$("#new-gif9").attr("src", results[9].images.fixed_height.url); //makes the gif move
+				isMoving9 = true;
+			} else {
+				$("#new-gif9").attr("src", results[9].images.fixed_height_still.url); //makes the gif stop
+				isMoving9 = false;
+			}
+
+		});
 
 
 	});
