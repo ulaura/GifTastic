@@ -10,7 +10,7 @@ function buttonMaker() {
 	$("#halloween-buttons").empty();
 
 	for (var i = 0; i < topics.length; i++) {
-		$("#halloween-buttons").append("<button type=button class='topic-button'>" + topics[i] + "</button>");
+		$("#halloween-buttons").append("<button type=button class='topic-button btn btn-primary'>" + topics[i] + "</button>");
 	};
 
 
